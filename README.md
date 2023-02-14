@@ -47,7 +47,7 @@ Good luck.
 ## Installation
 
 ```
-go get gitlab.com/nabati/superapp/fairy
+go get github.com/rifky1211/fairy
 ```
 
 ## Usage
