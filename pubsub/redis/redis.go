@@ -53,7 +53,7 @@ func NewFromGoRedis(client *redis.Client) *Client {
 }
 
 // Publish to publish message.
-func (c *Client) Publish(ctx context.Context, channel string, data interface{}) error {
+func (c *Client) Publish(ctx context.Context, channel string, data interface{}, durable bool) error {
 	j, err := json.Marshal(data)
 	if err != nil {
 		return err

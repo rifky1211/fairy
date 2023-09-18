@@ -53,7 +53,7 @@ func New(projectID, serviceAccountCredentialPath string) (*Client, error) {
 }
 
 // Publish to publish message.
-func (c *Client) Publish(ctx context.Context, topic string, data interface{}) error {
+func (c *Client) Publish(ctx context.Context, topic string, data interface{}, durable bool) error {
 	j, err := json.Marshal(data)
 	if err != nil {
 		return err

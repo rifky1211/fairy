@@ -21,7 +21,7 @@ func New(d string, ps pubsub.PubSub) pubsub.PubSub {
 }
 
 // Publish to publish message.
-func (c *client) Publish(ctx context.Context, topic string, data interface{}) error {
+func (c *client) Publish(ctx context.Context, topic string, data interface{}, durable bool) error {
 	segment := newrelic.MessageProducerSegment{
 		StartTime:       newrelic.FromContext(ctx).StartSegmentNow(),
 		Library:         c.dialect,
@@ -30,7 +30,7 @@ func (c *client) Publish(ctx context.Context, topic string, data interface{}) er
 	}
 	defer segment.End()
 
-	return c.pubsub.Publish(ctx, topic, data)
+	return c.pubsub.Publish(ctx, topic, data, false)
 }
 
 // Subscribe to subscribe.

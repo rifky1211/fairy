@@ -57,7 +57,7 @@ func New(url string) (*Client, error) {
 }
 
 // Publish to publish message.
-func (c *Client) Publish(ctx context.Context, queue string, data interface{}) error {
+func (c *Client) Publish(ctx context.Context, queue string, data interface{}, durable bool) error {
 	j, err := json.Marshal(data)
 	if err != nil {
 		return err
@@ -72,7 +72,7 @@ func (c *Client) Publish(ctx context.Context, queue string, data interface{}) er
 		return err
 	}
 
-	q, err := ch.QueueDeclare(queue, true, false, false, false, nil)
+	q, err := ch.QueueDeclare(queue, durable, false, false, false, nil)
 	if err != nil {
 		return err
 	}

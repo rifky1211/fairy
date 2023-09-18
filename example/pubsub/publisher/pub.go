@@ -31,7 +31,7 @@ func main() {
 	}
 
 	// Publish data to specific topic/channel. Data will be encoded first.
-	if err = client.Publish(context.Background(), "topic", data); err != nil {
+	if err = client.Publish(context.Background(), "topic", data, false); err != nil {
 		panic(err)
 	}
 }

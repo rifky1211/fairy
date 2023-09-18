@@ -19,7 +19,7 @@ import (
 type PubSub interface {
 	// Publish message to specific topic/channel.
 	// Data will be encoded first before publishing.
-	Publish(ctx context.Context, topic string, data interface{}) error
+	Publish(ctx context.Context, topic string, data interface{}, durable bool) error
 	// Subscribe to specific topic/channel.
 	Subscribe(ctx context.Context, topic string) (interface{}, error)
 	// Close pubsub client connection.
